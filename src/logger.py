@@ -14,21 +14,21 @@ class MetaSingleton(type):
 class Logger(metaclass=MetaSingleton):
     @staticmethod
     def _write_file(type_log, msg: str):
-        if not os.path.exists('log'):
-            os.mkdir('log')
-        log_write = f'[{type_log}] [{str(datetime.datetime.now())}]: {msg}\n'
+        if not os.path.exists("log"):
+            os.mkdir("log")
+        log_write = f"[{type_log}] [{str(datetime.datetime.now())}]: {msg}\n"
         print(log_write)
-        with open(f'log/{datetime.date.today()}.log', 'a') as file_log:
+        with open(f"log/{datetime.date.today()}.log", "a") as file_log:
             file_log.write(log_write)
 
     def info(self, msg):
-        self._write_file('Info', msg)
+        self._write_file("Info", msg)
 
     def error(self, msg):
-        self._write_file('Error', msg)
+        self._write_file("Error", msg)
 
     def warning(self, msg):
-        self._write_file('Warning', msg)
+        self._write_file("Warning", msg)
 
     def debug(self, msg):
-        self._write_file('Debug', msg)
+        self._write_file("Debug", msg)
